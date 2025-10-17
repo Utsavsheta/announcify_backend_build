@@ -1,8 +1,5 @@
 // api/index.js
 const serverless = require('serverless-http');
-const app = require('../src/app');   // <-- IMPORTANT: import app, NOT server.js
+const expressApp = require('../src/express-app');
 
-// optional: quick health check
-app.get('/api/health', (req, res) => res.json({ ok: true }));
-
-module.exports = serverless(app);
+module.exports = serverless(expressApp);
