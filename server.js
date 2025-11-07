@@ -43,9 +43,9 @@ const httpServer = (0, http_1.createServer)(app.express);
             console.log('🌱 Seeding completed');
         }
         // Start the server
-        // httpServer.listen(port, () => {
-        //     console.log(`🚀 Server is running on http://localhost:${port}`);
-        // });
+        httpServer.listen(port, () => {
+            console.log(`🚀 Server is running on http://localhost:${port}`);
+        });
     }
     catch (err) {
         console.error('❌ Error initializing server:', err);
@@ -53,5 +53,3 @@ const httpServer = (0, http_1.createServer)(app.express);
         process.exit(1); // Exit with failure
     }
 }))();
-
-module.exports = app.express;

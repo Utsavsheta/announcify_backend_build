@@ -12,9 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.runSeeds = void 0;
 const users_seeder_1 = require("./users.seeder");
 const languages_seeder_1 = require("./languages.seeder");
+const lessons_seeder_1 = require("./lessons.seeder");
 // run all seeds
 const runSeeds = (connection) => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, users_seeder_1.seedUsers)(connection);
     yield (0, languages_seeder_1.seedLanguages)(connection);
+    yield (0, lessons_seeder_1.seedLessons)(connection);
 });
 exports.runSeeds = runSeeds;
