@@ -32,16 +32,15 @@ const initializeApp = () => __awaiter(void 0, void 0, void 0, function* () {
     // Start initialization
     initializationPromise = (() => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            // Initialize database connection
+            // Initialize database connection (already authenticates)
             console.log('Initializing database connection...');
             sequelizeInstance = yield database_1.initializeDatabase();
             // Initialize models
             console.log('Initializing models...');
             index_model_1.initMySQLModels(sequelizeInstance);
-            // Sync database (use force: false in production, alter: false for safety)
-            console.log('Syncing database...');
-            yield sequelizeInstance.sync({ alter: false });
-            console.log('✅ Sequelize OK - Database synchronized successfully');
+            // Skip database sync in serverless to avoid timeout
+            // Database schema should already be set up in production
+            console.log('✅ Sequelize OK - Database connection ready');
             // Create app instance
             appInstance = new app_1.App();
             return { app: appInstance, sequelize: sequelizeInstance };
